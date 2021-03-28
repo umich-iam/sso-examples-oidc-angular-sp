@@ -27,7 +27,7 @@ To use the repository:
 
 1. Clone this repository
 1. Run `npm install` to get the dependencies
-1. Run `nd serve --ssl` to get it running on [https://localhost:4200](https://localhost:4200)
+1. Run `ng serve --ssl` to get it running on [https://localhost:4200](https://localhost:4200)
 
 You can connect to your own IdentityServer by changing `auth-config.ts`.
 Note that your server must whitelist both `http://localhost:4200/index.html` and `http://localhost:4200/silent-refresh.html` for this to work.
