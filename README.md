@@ -1,27 +1,41 @@
-# AngularSp
+# Example angular-oauth2-oidc with AuthGuard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.5.
+This repository shows a basic Angular CLI application with [the `angular-oauth2-oidc` library](https://github.com/manfredsteyer/angular-oauth2-oidc) and Angular AuthGuards.
+This was borrowed and modified from [this repo](https://github.com/jeroenheijmans/sample-angular-oauth2-oidc-with-auth-guards).
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+⚠ To see **the Implicit Flow** refer to [the `implicit-flow` branch](https://github.com/jeroenheijmans/sample-angular-oauth2-oidc-with-auth-guards/tree/implicit-flow) (which might be getting outdated, since Code Flow is now the recommended flow).
 
-## Code scaffolding
+This demonstrates:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Use of **the Code+PKCE Flow** (so no JWKS validation)
+- Modules (core, shared, and two feature modules)
+- An auth guard that forces you to login when navigating to protected routes
+- An auth guard that just prevents you from navigating to protected routes
+- Asynchronous loading of login information (and thus async auth guards)
+- Using `localStorage` for storing tokens (use at your own risk!)
+- Loading IDS details from its discovery document
+- Trying refresh on app startup before potientially starting a login flow
+- OpenID's external logout features
 
-## Build
+Most interesting features can be found in [the core module](./src/app/core).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Usage
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This repository has been scaffolded with the Angular 5 CLI, then later upgraded to newer versions of the Angular CLI.
+To use the repository:
 
-## Running end-to-end tests
+1. Clone this repository
+1. Run `npm install` to get the dependencies
+1. Run `nd serve --ssl` to get it running on [https://localhost:4200](https://localhost:4200)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+You can connect to your own IdentityServer by changing `auth-config.ts`.
+Note that your server must whitelist both `http://localhost:4200/index.html` and `http://localhost:4200/silent-refresh.html` for this to work.
 
-## Further help
+## Example
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The application is supposed to look somewhat like this:
+
+![Application Screenshot](screenshot-001.png)
